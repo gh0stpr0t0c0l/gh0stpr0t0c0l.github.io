@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Logging Out - Dark Themed Modern Website</title>
+  <style>
+    /* Resetting default browser styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
+      background-color: #2c2f38; /* Charcoal Background */
+      color: #e0e0e0; /* Light Gray Text */
+      padding-top: 60px; /* Account for fixed nav */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh; /* Full screen height */
+      text-align: center;
+      flex-direction: column; /* Ensure content flows vertically */
+    }
+
+    /* Centered logout message */
+    .logout-message {
+      background-color: #333d47;
+      padding: 40px 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      width: 90%;
+      max-width: 400px;
+    }
+
+    .logout-message h1 {
+      font-size: 2.5rem;
+      color: #e0e0e0;
+      margin-bottom: 20px;
+    }
+
+    .logout-message p {
+      font-size: 1.1rem;
+      color: #c1c1c1;
+      margin-bottom: 30px;
+    }
+
+    .logout-message p strong {
+      color: #6ab7b4; /* Muted Cyan for emphasis */
+    }
+
+    /* Footer */
+    footer {
+      background-color: #222d35; /* Darker footer background */
+      color: #e0e0e0;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      border-radius: 10px 10px 0 0; /* Rounded corners for footer */
+      position: absolute; /* Positioning it at the bottom */
+      left: 0;
+      bottom: 0;
+      width: 100%; /* Ensure it spans the entire width */
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Logout message section -->
+  <div class="logout-message">
+    <h1>Logging Out...</h1>
+    <p>You have successfully logged out. You will be redirected to the homepage shortly.</p>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Dark Themed Modern Website | All Rights Reserved</p>
+  </footer>
+
+  <script>
+    if (sessionStorage.getItem('youlose') === '1') {
+        // Redirect to 'youlose.html'
+        window.location.href = 'youlose.html';
+    }
+
+    if (sessionStorage.getItem('bsod') === '1') {
+        // Redirect to 'bsod.html'
+        window.location.href = 'BSOD2.html';
+    }
+
+    if (sessionStorage.getItem('black') === '1') {
+        // Redirect to 'blackscreen.html'
+        window.location.href = 'blackscreen.html';
+    }
+
+    if (sessionStorage.getItem('final') === '1') {
+        // Redirect to 'finale2.html'
+        window.location.href = 'finale2.html';
+    }
+
+    // Check if 'hidewindow' in sessionStorage is '1'
+    if (sessionStorage.getItem('hidewindow') === '1') {
+        // Redirect to 'grayenet.html'
+        window.location.href = 'grayenet.html';
+    }
+
+    // Run the sessionStorage command to clear login status
+    sessionStorage.setItem('passcorrect', '0');
+
+    // Redirect to the home page after a short delay (3 seconds)
+    setTimeout(function() {
+      window.location.href = 'home.html';
+    }, 1700); // Delay for 3 seconds
+  </script>
+
+</body>
+</html>

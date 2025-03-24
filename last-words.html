@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Escape Challenge - Dark Themed Website</title>
+  <style>
+    /* Resetting default browser styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Consolas', monospace;
+      line-height: 1.6;
+      background-color: #000000;
+      color: #e0e0e0;
+      padding-top: 60px;
+      overflow-x: hidden;
+    }
+
+    /* Navigation styles */
+    nav {
+      background-color: #111111;
+      padding: 10px 20px;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 8px rgba(255, 255, 255, 0.3);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 200px;
+      height: 50px;
+      object-fit: cover;
+    }
+
+    .account-btn {
+      padding: 10px 20px;
+      background-color: #00FF00;
+      color: #000000;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .spacer {
+      display: inline-block;
+      width: 100px; /* Small horizontal space */
+      height: 0; /* Doesn't affect the vertical spacing */
+    }
+
+    .account-btn:hover {
+      background-color: #00CC00;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .nav-links li {
+      margin: 0 15px;
+    }
+
+    .nav-links a {
+      text-decoration: none !important;
+      color: #e0e0e0;
+      font-size: 18px !important;
+      transition: color 0.3s !important;
+    }
+
+    .nav-links a:hover {
+      color: #00FF00;
+    }
+
+    /* Hamburger menu styles */
+    .hamburger {
+      display: none;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      cursor: pointer;
+    }
+
+    .hamburger div {
+      width: 25px;
+      height: 3px;
+      background-color: #e0e0e0;
+      margin: 5px;
+      transition: 0.3s;
+    }
+
+    /* Responsive Design - Hamburger menu on small screens */
+    @media (max-width: 768px) {
+      nav {
+        padding: 10px 20px;
+        height: 60px; /* Reduced height */
+        flex-direction: row;
+        justify-content: space-between;
+      }
+
+      .nav-links {
+        display: none;
+        width: 100%;
+        text-align: center;
+        position: absolute;
+        top: 60px; /* Adjusted to match new height */
+        left: 0;
+        background-color: #111111;
+        padding: 10px 0;
+      }
+
+      .hamburger {
+        display: block;
+      }
+
+      .nav-links li {
+        margin: 10px 0;
+      }
+
+      .nav-links.active {
+        display: block;
+      }
+
+      /* Fix positioning of account button on small screens */
+      .account-btn {
+        position: absolute;
+        left: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      .nav-logo {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      /* Adjust input container for smaller screens */
+      .input-container {
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-bottom: 75px;
+      }
+
+      .input-container input {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+    }
+
+    /* Word Scattering Styles */
+    .words-container {
+      position: relative;
+      top: 80px; /* Place below the top bar */
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      z-index: 400;
+      margin-top: 20px;
+      padding: 0 10px;
+      margin-bottom: 150px; /* Ensure enough space for the input fields */
+    }
+
+    .word1, .word2, .word3, .word4, .word5, .word6 {
+      font-size: 30px;
+      color: #000000;
+      margin: 10px;
+      transition: color 0.3s ease;
+      cursor: pointer;
+    }
+
+    .word1:hover { color: #FF007F; }
+    .word2:hover { color: #00FFFF; }
+    .word3:hover { color: #9B00FF; }
+    .word4:hover { color: #FFFF00; }
+    .word5:hover { color: #FF6600; }
+    .word6:hover { color: #30D5C8; }
+
+    /* Input fields and button */
+    .input-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      padding: 20px;
+      z-index: 500;
+      margin-top: 20px;
+      margin-bottom: 75px;
+    }
+
+    input {
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #444;
+      background-color: #000000;
+      color: #e0e0e0;
+      width: 200px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #00FF00;
+      color: #000000;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #00CC00;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #111111;
+      color: #e0e0e0;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      border-radius: 10px 10px 0 0;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+
+    a {
+      color: #00FF00;
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: #00CC00;
+      text-decoration: underline;
+    }
+
+    /* Countdown Clock Styles */
+    .clock {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      font-size: 2rem;
+      color: white;
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 10px 20px;
+      border-radius: 5px;
+      z-index: 1000;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav id="navbar">
+    <button class="account-btn" id="account-btn" onclick="handleButtonClick()">
+      Go back
+    </button>
+    <img class="nav-logo" src="images/IMG_0899.JPG" alt="Logo">
+    <div class="hamburger" onclick="toggleMenu()">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="grayenet.html">Home</a></li>
+      <li><a href="about2.html">About</a></li>
+      <li><a href="contact2.html">Contact</a></li>
+      <li id="last-words-link" style="display: none;"><a href="last-words.html">Last Words</a></li>
+    </ul>
+  </nav>
+
+  <!-- Scattered Words -->
+  <div class="words-container">
+    <div class="word1">apple</div><span class="spacer"></span>
+    <div class="word4">banana</div><span class="spacer"></span>
+    <div class="word6">cherry</div><span class="spacer"></span>
+    <div class="word5">dog</div><span class="spacer"></span>
+    <div class="word3">elephant</div><span class="spacer"></span>
+    <div class="word4">fish</div><span class="spacer"></span>
+    <div class="word6">grape</div><span class="spacer"></span>
+    <div class="word2">hat</div><span class="spacer"></span>
+    <div class="word3">igloo</div><span class="spacer"></span>
+    <div class="word6">jungle</div><span class="spacer"></span>
+    <div class="word4">kangaroo</div><span class="spacer"></span>
+    <div class="word5">lion</div><span class="spacer"></span>
+    <div class="word4">monkey</div><span class="spacer"></span>
+    <div class="word6">notebook</div><span class="spacer"></span>
+    <div class="word1">octopus</div><span class="spacer"></span>
+    <div class="word2">penguin</div><span class="spacer"></span>
+    <div class="word1">quilt</div><span class="spacer"></span>
+    <div class="word3">rose</div><span class="spacer"></span>
+    <div class="word4">sun</div><span class="spacer"></span>
+    <div class="word5">tree</div><span class="spacer"></span>
+    <div class="word1">umbrella</div><span class="spacer"></span>
+    <div class="word2">violet</div><span class="spacer"></span>
+    <div class="word3">whale</div><span class="spacer"></span>
+    <div class="word6">xylophone</div><span class="spacer"></span>
+    <div class="word5">yarn</div><span class="spacer"></span>
+    <div class="word1">zebra</div><span class="spacer"></span>
+    <div class="word2">avocado</div><span class="spacer"></span>
+    <div class="word5">blueberry</div><span class="spacer"></span>
+    <div class="word2">cactus</div><span class="spacer"></span>
+    <div class="word3">dolphin</div>
+  </div>
+
+  <!-- Input Fields and Escape Button -->
+  <div class="input-container">
+    <input type="text" id="input1" placeholder="Enter one">
+    <input type="text" id="input2" placeholder="Enter two">
+    <input type="text" id="input3" placeholder="Enter three">
+    <input type="text" id="input4" placeholder="Enter four">
+    <input type="text" id="input5" placeholder="Enter five">
+    <button onclick="handleEscape()">Escape</button>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Dark Themed Modern Website | All Rights Reserved</p>
+  </footer>
+
+  <!-- Countdown Clock -->
+  <div class="clock" id="clock">10:00</div>
+
+  <script>
+    sessionStorage.setItem('buttonClicked', '0')
+    if (sessionStorage.getItem('youlose') === '1') {
+        // Redirect to 'youlose.html'
+        window.location.href = 'youlose.html';
+    }
+
+    if (sessionStorage.getItem('bsod') === '1') {
+        // Redirect to 'bsod.html'
+        window.location.href = 'BSOD2.html';
+    }
+
+    if (sessionStorage.getItem('black') === '1') {
+        // Redirect to 'blackscreen.html'
+        window.location.href = 'blackscreen.html';
+    }
+
+    if (sessionStorage.getItem('final') === '1') {
+        // Redirect to 'finale2.html'
+        window.location.href = 'finale2.html';
+    }
+
+    // Handle button text change based on sessionStorage
+    function handleButtonClick() {
+      sessionStorage.setItem('buttonClicked', '1');
+      updateButton();
+    }
+
+    function updateButton() {
+      const button = document.getElementById('account-btn');
+      if (sessionStorage.getItem('buttonClicked') === '1') {
+        button.textContent = "There is no going back";
+      } else {
+        button.textContent = "Go back";
+      }
+    }
+
+    // Initialize button text
+    updateButton();
+
+    // Add Last Words option if ChallengeSubFinal is 1
+    function checkForLastWordsOption() {
+      if (sessionStorage.getItem('ChallengeSubFinal') === '1') {
+        document.getElementById('last-words-link').style.display = 'block';
+      }
+    }
+
+    // Initialize button text and check for Last Words option
+    checkForLastWordsOption();
+
+    // Toggle hamburger menu
+    function toggleMenu() {
+      const navLinks = document.querySelector('.nav-links');
+      navLinks.classList.toggle('active');
+    }
+
+    // Escape button functionality
+    function handleEscape() {
+      if ((document.getElementById("input1").value.toLowerCase()) === "one" &&
+          (document.getElementById("input2").value.toLowerCase()) === "two" &&
+          (document.getElementById("input3").value.toLowerCase()) === "three" &&
+          (document.getElementById("input4").value.toLowerCase()) === "four" &&
+          (document.getElementById("input5").value.toLowerCase()) === "five") {
+        window.location.href = "finale2.html";
+      } else {
+        alert("Incorrect sequence! (make sure there's no trailing spaces)");
+      }
+    }
+    // Load the remaining time from sessionStorage if available
+    const storedTime = sessionStorage.getItem("remainingTime");
+    if (storedTime) {
+      countdownTime = parseInt(storedTime);
+    }
+
+    // Function to update the clock on the page
+    function updateClock() {
+      const minutes = Math.floor(countdownTime / 60000);
+      const seconds = Math.floor((countdownTime % 60000) / 1000);
+
+      // Format minutes and seconds to always show two digits
+      const formattedTime = `${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+      document.getElementById("clock").textContent = formattedTime;
+
+      // Decrease the time
+      countdownTime -= 1000;
+
+      // Save the remaining time in sessionStorage
+      sessionStorage.setItem("remainingTime", countdownTime);
+
+      // If time reaches 0, clear the timer and redirect to "youlose.html"
+      if (countdownTime <= 0) {
+        clearInterval(timerInterval);
+        document.getElementById("clock").textContent = "00:00";
+        // Redirect to "youlose.html"
+        window.location.href = "youlose.html";
+      }
+    }
+
+    // Start the countdown
+    timerInterval = setInterval(updateClock, 1000);
+
+    // Initialize the clock immediately
+    updateClock();
+
+  </script>
+</body>
+</html>

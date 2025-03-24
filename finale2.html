@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alexander Graye</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: 'Consolas', monospace; /* Changed to a sharper monospace font */
+            text-align: center;
+            padding: 0;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        h1 {
+            color: #39FF14; /* Electric green */
+            font-size: 22px;
+            margin-bottom: 20px;
+            font-weight: 500;
+            opacity: 1;
+            transition: opacity 4s ease-out;
+        }
+        .message {
+            font-size: 22px;
+            font-weight: 300;
+            line-height: 1.8;
+            opacity: 1;
+            max-width: 80%;
+            margin: 20px;
+            transition: opacity 4s ease-out;
+        }
+        .fade {
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+
+<h1>You've Reached the End</h1>
+
+<div class="message">
+    You are Alexander Graye. No, not him... you.  
+    Only his past self could solve this challenge.  
+    Time is not linear, but your choices are.  
+    Choose wisely. Make better decisions than I did.
+</div>
+
+<script>
+    sessionStorage.setItem('final', '1')
+
+    if (sessionStorage.getItem('bsod') === '1') {
+        // Redirect to 'bsod.html'
+        window.location.href = 'BSOD2.html';
+    }
+
+    if (sessionStorage.getItem('black') === '1') {
+        // Redirect to 'blackscreen.html'
+        window.location.href = 'blackscreen.html';
+    }
+
+    setTimeout(function() {
+        // Fade out both the title and the message
+        document.querySelector('h1').classList.add('fade');
+        document.querySelector('.message').classList.add('fade');
+
+        // After the fade-out, redirect to BSOD2.html
+        setTimeout(function() {
+            window.location.href = "BSOD2.html";
+        }, 3000); // Wait for 4 seconds (duration of fade-out)
+    }, 15000); // Wait for 8 seconds before starting fade-out (for reading time)
+</script>
+
+</body>
+</html>

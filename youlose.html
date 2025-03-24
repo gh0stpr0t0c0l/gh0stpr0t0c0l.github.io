@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+        h1 {
+            font-size: 48px;
+            color: #e74c3c;
+        }
+        p {
+            margin: 10px 0;
+        }
+        a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Style for the fade-in and fade-out text */
+        .fade-text {
+            position: fixed;
+            bottom: 30px; /* Moved up from 10px */
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 18px;
+            color: rgba(169, 169, 169, 0.8); /* Faint gray color */
+            opacity: 0;
+            animation: fadeInOut 6s forwards;
+        }
+
+        @keyframes fadeInOut {
+            0% {
+                opacity: 0;
+            }
+            20% {
+                opacity: 1;
+            }
+            80% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>404</h1>
+    <p>Oops! The page you're looking for could not be found.</p>
+</div>
+
+<!-- Container for the fade-in and fade-out text -->
+<div id="fade-text" class="fade-text">I knew you couldn't do it; only I could do it</div>
+
+<script>
+    sessionStorage.setItem('youlose', '1')
+    window.onload = function() {
+        const element = document.getElementById('fade-text');
+        
+        // Add a short delay before fading in (1 second)
+        setTimeout(function() {
+            element.style.opacity = 1; // Fades in the text
+        }, 2000);
+    };
+</script>
+
+</body>
+</html>

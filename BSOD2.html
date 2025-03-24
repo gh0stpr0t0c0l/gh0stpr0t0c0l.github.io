@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Windows Blue Screen of Death</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background-color: #0078d7; /* BSOD blue background */
+      font-family: Arial, sans-serif; /* Changed font to Arial */
+      color: white;
+      display: flex;
+      justify-content: flex-start; /* Align content to the left */
+      align-items: center;
+      text-align: left; /* Left-align text */
+      overflow: hidden;
+    }
+
+    .bsod-container {
+      width: auto;
+      max-width: 800px;
+      padding: 30px;
+      margin-left: 50px; /* Offset text by 250px from the left side of the screen */
+      display: flex;
+      flex-direction: column; /* Stack the elements vertically */
+      margin-top: 0px; /* Reduced space between the top of the screen and the content */
+    }
+
+    h1 {
+      font-size: 130px;
+      margin: 0;
+      font-weight: normal; /* Make the :( character not bold */
+    }
+
+    .error-description {
+      font-size: 26px;
+      margin-top: 20px;
+      margin-bottom: 30px;
+      word-wrap: break-word; /* Ensure the text wraps */
+      width: 75%; /* Limit text width to 2/3 of the page */
+    }
+
+    .progress {
+      font-size: 26px;
+    }
+
+    /* Spacer div for adding extra space between elements */
+    .spacer {
+      margin-top: 50px; /* Adds space between the counter and the error data message */
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="bsod-container">
+    <h1>:&#40;</h1>
+    <div class="error-description">
+      Your hard drive has been corrupted. We're just collecting some error info and then we'll wipe it for you.<br>
+    </div>
+
+    <div class="spacer"></div>
+
+    <div class="progress">
+      (0% complete)
+    </div>
+
+  <script>
+    if (sessionStorage.getItem('black') === '1') {
+        // Redirect to 'blackscreen.html'
+        window.location.href = 'blackscreen.html';
+    }
+
+    sessionStorage.setItem('bsod', '1')
+    // Function to update the percentage
+    let percent = 0;
+    const progressElement = document.querySelector('.progress');
+    
+    function updateProgress() {
+      if (percent <= 100) {
+        progressElement.textContent = `(${percent}% complete)`;
+        percent++;
+        
+        // When the counter reaches 100, redirect to blackscreen.html
+        if (percent > 100) {
+          window.location.href = 'blackscreen.html'; // Redirect to blackscreen.html
+        } else {
+          setTimeout(updateProgress, 50); // Speed of the percentage increase
+        }
+      }
+    }
+    
+    // Start the percentage update
+    updateProgress();
+  </script>
+
+</body>
+</html>

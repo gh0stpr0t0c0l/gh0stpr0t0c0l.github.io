@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Login - Dark Themed Modern Website</title>
+  <style>
+    /* Resetting default browser styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
+      background-color: #2c2f38; /* Charcoal Background */
+      color: #e0e0e0; /* Light Gray Text */
+      height: 100vh; /* Full height for flex layout */
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between; /* Keep footer at the bottom */
+    }
+
+    /* Back Button */
+    .back-button {
+      background-color: #6ab7b4; /* Muted Cyan */
+      border: none;
+      color: #e0e0e0;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      transition: background-color 0.3s ease;
+      margin: 10px auto;
+      position: relative;
+      left: 10px; /* Move button slightly to the right */
+    }
+
+    .back-button:hover {
+      background-color: #ff6a95; /* Muted Magenta on hover */
+    }
+
+    .back-button:focus {
+      outline: none;
+    }
+
+    /* Login Form */
+    .login-container {
+      max-width: 400px;
+      margin: 50px auto; /* Centers the form and adds space from top */
+      padding: 20px 30px 20px; /* Adjusted bottom padding */
+      background-color: #333d47; /* Dark background for the login form */
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      flex-grow: 1; /* Allow form to expand and take space */
+    }
+
+    .login-container h2 {
+      text-align: center;
+      color: #e0e0e0;
+      margin-bottom: 20px;
+    }
+
+    .login-container input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      background-color: #444d57;
+      border: 1px solid #6ab7b4; /* Muted Cyan border */
+      border-radius: 8px;
+      color: #e0e0e0;
+      font-size: 16px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .login-container input[type="submit"] {
+      background-color: #6ab7b4; /* Muted Cyan */
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      font-size: 18px;
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
+    }
+
+    .login-container input[type="submit"]:hover {
+      background-color: #ff6a95; /* Muted Magenta */
+    }
+
+    /* Error Message */
+    .error-message {
+      color: red;
+      text-align: center;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #222d35; /* Darker footer background */
+      color: #e0e0e0;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      border-radius: 10px 10px 0 0; /* Rounded corners for footer */
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .login-container {
+        width: 90%;
+        padding: 20px;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Back Button -->
+  <a href="home.html"> <!-- Update the link to go to home page -->
+    <button class="back-button">Back to Home</button>
+  </a>
+
+  <!-- Login Form -->
+  <div class="login-container">
+    <h2>Login</h2>
+    <form id="login-form" onsubmit="return handleLogin(event)">
+      <input type="text" id="username" name="username" placeholder="Username" required>
+      <input type="password" id="password" name="password" placeholder="Password" required>
+      <input type="submit" value="Login">
+    </form>
+    <p id="error-message" class="error-message" style="display: none;">Invalid username or password. Please try again.</p>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Dark Themed Modern Website | All Rights Reserved</p>
+  </footer>
+
+  <script>
+    if (sessionStorage.getItem('youlose') === '1') {
+        // Redirect to 'youlose.html'
+        window.location.href = 'youlose.html';
+    }
+
+    if (sessionStorage.getItem('bsod') === '1') {
+        // Redirect to 'bsod.html'
+        window.location.href = 'BSOD2.html';
+    }
+
+    if (sessionStorage.getItem('black') === '1') {
+        // Redirect to 'blackscreen.html'
+        window.location.href = 'blackscreen.html';
+    }
+
+    if (sessionStorage.getItem('final') === '1') {
+        // Redirect to 'finale2.html'
+        window.location.href = 'finale2.html';
+    }
+
+    // Check if 'hidewindow' in sessionStorage is '1'
+    if (sessionStorage.getItem('hidewindow') === '1') {
+        // Redirect to 'grayenet.html'
+        window.location.href = 'grayenet.html';
+    }
+
+    sessionStorage.setItem('displayBanner', '0');
+    if (sessionStorage.getItem('passcorrect') == '1') {
+      window.location.href = 'account.html'; // Change to your desired redirect page
+    }
+
+    // Handle Login Form Submission
+    function handleLogin(event) {
+      event.preventDefault(); // Prevent the form from submitting the traditional way
+
+      // Get the input values
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+
+      // Example: Check hardcoded username and password (you can replace this with real backend validation)
+      if (username === 'admin' && password === 'password123') {
+        // If credentials are correct, redirect to home page or account page
+        sessionStorage.setItem('passcorrect', '1');
+        sessionStorage.setItem('displayBanner', '1');
+        window.location.href = 'account.html'; // Change to your desired redirect page
+      } else {
+        // Show error message if credentials are incorrect
+        const errorMessage = document.getElementById('error-message');
+        errorMessage.style.display = 'block';
+      }
+    }
+  </script>
+
+</body>
+</html>
