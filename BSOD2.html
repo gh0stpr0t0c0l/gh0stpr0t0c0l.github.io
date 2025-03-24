@@ -50,9 +50,30 @@
 
     /* Spacer div for adding extra space between elements */
     .spacer {
-      margin-top: 50px; /* Adds space between the counter and the error data message */
+      margin-top: 10px; /* Adds space between the counter and the error data message */
     }
 
+    /* New container for image and text */
+    .image-text-container {
+      display: flex;
+      align-items: flex-start;
+      margin-top: 20px;
+    }
+
+    .image-container {
+      max-width: 1.5in; /* Set the image width to 1.5 inches */
+      max-height: 1.5in; /* Set the image height to 1.5 inches */
+      margin-right: 15px; /* Space between the image and the text */
+    }
+
+    .image-container img {
+      width: 100%; /* Make image fill the container */
+      height: 100%; /* Make image fill the container */
+    }
+
+    .info-text {
+      font-size: 18px; /* Smaller font size for the text */
+    }
   </style>
 </head>
 <body>
@@ -69,13 +90,26 @@
       (0% complete)
     </div>
 
+    <div class="spacer"></div>
+
+    <!-- New section for image and text -->
+    <div class="image-text-container">
+      <div class="image-container">
+        <img src="images/qr.png" alt="Image Description"> <!-- Replace with your image URL -->
+      </div>
+      <br><div class="info-text">
+        For more information about this issue and impossible fixes, visit our site.
+      </div>
+    </div>
+  </div>
+
   <script>
+    sessionStorage.setItem('bsod', '1')
     if (sessionStorage.getItem('black') === '1') {
         // Redirect to 'blackscreen.html'
         window.location.href = 'blackscreen.html';
     }
 
-    sessionStorage.setItem('bsod', '1')
     // Function to update the percentage
     let percent = 0;
     const progressElement = document.querySelector('.progress');
