@@ -310,20 +310,9 @@
   </footer>
 
   <script>
-    // Check if 'hidewindow' in sessionStorage is '1'
-    if (sessionStorage.getItem('hidewindow') === '1') {
-        // Redirect to 'grayenet.html'
-        window.location.href = 'grayenet.html';
-    }
-
     if (sessionStorage.getItem('youlose') === '1') {
         // Redirect to 'youlose.html'
         window.location.href = 'youlose.html';
-    }
-
-    if (sessionStorage.getItem('bsod') === '1') {
-        // Redirect to 'bsod.html'
-        window.location.href = 'BSOD2.html';
     }
 
     if (sessionStorage.getItem('black') === '1') {
@@ -331,11 +320,21 @@
         window.location.href = 'blackscreen.html';
     }
 
+    if (sessionStorage.getItem('bsod') === '1') {
+        // Redirect to 'bsod.html'
+        window.location.href = 'BSOD2.html';
+    }
+
     if (sessionStorage.getItem('final') === '1') {
         // Redirect to 'finale2.html'
         window.location.href = 'finale2.html';
     }
 
+    // Check if 'hidewindow' in sessionStorage is '1'
+    if (sessionStorage.getItem('hidewindow') === '1') {
+        // Redirect to 'grayenet.html'
+        window.location.href = 'grayenet.html';
+    }
 
     // Toggle hamburger menu on small screens
     function toggleMenu() {
