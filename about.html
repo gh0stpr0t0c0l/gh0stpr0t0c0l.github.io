@@ -176,54 +176,69 @@
       margin-top: 30px;
     }
 
-    .team-member {
-      background-color: #444d57; /* Darker background for team members */
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      text-align: center;
-      transition: transform 0.3s ease, max-height 0.3s ease; /* Add transition for max-height */
-      max-height: 480px; /* Initially limit the height */
-      overflow: hidden;
-    }
+ .hover-number {
+  color: #444d57 !important; /* Default color */
+  transition: color 3s;
+}
 
-    .team-member.expanded {
-      max-height: 530px; /* Expanded height */
-    }
+.team-member {
+  background-color: #444d57; /* Darker background for team members */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  transition: transform 0.3s ease, max-height 0.3s ease;
+  max-height: 480px; /* Initially limit the height FIXME */
+  overflow: hidden;
+}
 
-    .team-member:hover {
-      transform: translateY(-20px); /* Lift effect on hover */
-    }
+.team-member.expanded {
+  max-height: 530px; /* Expanded height */
+}
 
-    /* Updated styles for images inside team members */
-    .team-member img {
-      width: 100%;        /* Make the image stretch to the full width of the container */
-      height: auto;       /* Maintain the aspect ratio of the image */
-      border-radius: 0;   /* Remove the border-radius to make the image rectangular */
-      object-fit: cover;  /* Ensure the image covers the area without distortion */
-      margin-bottom: 15px; /* Add some space between the image and text */
-    }
+.team-member:hover {
+  transform: translateY(-20px); /* Lift effect on hover */
+}
 
-    .team-member h3 {
-      font-size: 1.25rem;
-      color: #e0e0e0;
-      margin-bottom: 10px;
-    }
+.team-member img {
+  width: 100%;        /* Make the image stretch to the full width of the container */
+  height: auto;       /* Maintain the aspect ratio of the image */
+  border-radius: 0;   /* Remove the border-radius to make the image rectangular */
+  object-fit: cover;  /* Ensure the image covers the area without distortion */
+  margin-bottom: 15px; /* Add some space between the image and text */
+}
 
-    .team-member p {
-      font-size: 1rem;
-      color: #c1c1c1;
-    }
+.team-member h3 {
+  font-size: 1.25rem;
+  color: #e0e0e0;
+  margin-bottom: 10px;
+}
 
-    /* Hover effect for the number */
-    .hover-number {
-      color: #444d57 !important; /* Default color */
-      transition: color 3s;
-    }
+.team-member p {
+  font-size: 1rem;
+  color: #c1c1c1;
+}
 
-    .hover-number:hover {
-      color: white !important; /* Color on hover */
-    }
+/* Default color for hover-number */
+.hover-number {
+  color: #444d57 !important;
+  font-size: 2rem;
+}
+
+/* Hover effect for hover-number */
+.hover-number:hover {
+  color: white !important; /* Color on hover */
+}
+
+/* Hover effect for team-member */
+.team-member:hover .hover-number {
+  color: green !important; /* Color when team-member is hovered */
+}
+
+/* Ensure hover-number is white when both hover-number and team-member are hovered */
+.team-member:hover .hover-number:hover {
+  color: white !important; /* White takes precedence */
+}
 
     /* Footer */
     footer {
