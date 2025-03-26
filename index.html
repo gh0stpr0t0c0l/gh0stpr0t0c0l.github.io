@@ -106,6 +106,27 @@
                 top: -300px; /* Moves the circle off the top of the screen */
                 transform: translate(-50%, -50%);
             }
+            body {
+                background-size: cover; /* Ensures the background covers the entire screen on small devices */
+                background-position: center center; /* Keeps it centered */
+            }
+            .content {
+                width: 300px; /* Reduce width */
+                height: 300px; /* Reduce height */
+                padding: 20px; /* Adjust padding */
+            }
+            .apps {
+                gap: 10px; /* Reduce spacing between apps */
+            }
+        
+            .app img {
+                width: 60px; /* Reduce icon size */
+                height: 60px;
+            }
+        
+            .app label {
+                font-size: 12px; /* Reduce font size for labels */
+            }
         }
     </style>
 </head>
