@@ -101,6 +101,12 @@
             top: 60%; /* Adjusted final position further down */
             transform: translate(-50%, -50%);
         }
+        @media (max-width: 600px) {
+            body.scrolled .logo-container {
+                top: -50px; /* Moves the circle off the top of the screen */
+                transform: translate(-50%, -50%);
+            }
+        }
     </style>
 </head>
 <body>

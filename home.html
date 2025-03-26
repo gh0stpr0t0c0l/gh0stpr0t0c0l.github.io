@@ -266,7 +266,7 @@
     <!-- Account icon in the top left corner with a link -->
     <a href="login.html">
       <div class="account-icon">
-        <img src="images/IMG_0899.JPG" alt="Account Icon">
+        <img src="images/profile.png" alt="Account Icon">
       </div>
     </a>
 
@@ -370,6 +370,13 @@
       const navLinks = document.querySelector('.nav-links');
       navLinks.classList.toggle('active');
     }
+    window.onload = function() {
+      const accountIconImg = document.querySelector(".account-icon img");
+    
+      if (sessionStorage.getItem("passcorrect") === "1") {
+        accountIconImg.src = "images/profile2.png"; // Change to the new image
+      }
+    };
   </script>
 </body>
 </html>
