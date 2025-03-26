@@ -25,6 +25,7 @@
             width: 100%;
             min-height: 200vh;
         }
+
         .logo-container {
             position: fixed;
             top: 50%;
@@ -34,10 +35,10 @@
             height: 200px;
             background: #333;
             border-radius: 50%;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
             transition: all 0.5s ease-in-out;
-            z-index: 5; /* Lowered below content */
+            z-index: 20; /* BELOW the square */
         }
+
         .logo-container img {
             position: absolute;
             top: 50%;
@@ -46,8 +47,9 @@
             width: 150px;
             height: 150px;
             border-radius: 50%;
-            z-index: 15;
+            z-index: 15; /* ABOVE the square */
         }
+
         .content {
             position: fixed;
             top: 120%; /* Kept off-screen initially */
@@ -59,11 +61,9 @@
             transform: translate(-50%, 0);
             padding: 30px;
             transition: all 0.5s ease-in-out;
-            z-index: 8;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+            z-index: 10; /* BETWEEN the circle and logo image */
         }
+
         .apps {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -94,7 +94,7 @@
         
         /* Scroll Effect */
         body.scrolled .logo-container {
-            top: 20px;
+            top: 50px;
             transform: translate(-50%, 0);
         }
         body.scrolled .content {
