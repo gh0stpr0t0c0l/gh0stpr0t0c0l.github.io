@@ -94,16 +94,16 @@
         
         /* Scroll Effect */
         body.scrolled .logo-container {
-            top: 50px;
+            top: 8%;
             transform: translate(-50%, 0);
         }
         body.scrolled .content {
             top: 60%; /* Adjusted final position further down */
             transform: translate(-50%, -50%);
         }
-        @media (max-width: 600px) {
+        @media (max-height: 700px) {
             body.scrolled .logo-container {
-                top: -50px; /* Moves the circle off the top of the screen */
+                top: 5%; /* Moves the circle off the top of the screen */
                 transform: translate(-50%, -50%);
             }
         }
