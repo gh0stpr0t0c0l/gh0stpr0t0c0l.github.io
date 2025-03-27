@@ -25,19 +25,19 @@
       min-height: 100vh; /* Ensure the body takes up at least the full height of the viewport */
     }
 
-main {
-  flex: 1; /* Ensures the main content takes up the remaining space */
-}
+    main {
+      flex: 1; /* Ensures the main content takes up the remaining space */
+    }
 
-footer {
-  background-color: #222d35; /* Darker footer background */
-  color: #e0e0e0;
-  text-align: center;
-  padding: 20px;
-  font-size: 14px;
-  border-radius: 10px 10px 0 0; /* Rounded corners for footer */
-  margin-top: auto; /* Pushes the footer to the bottom of the page */
-}
+    footer {
+      background-color: #222d35; /* Darker footer background */
+      color: #e0e0e0;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      border-radius: 10px 10px 0 0; /* Rounded corners for footer */
+      margin-top: auto; /* Pushes the footer to the bottom of the page */
+    }
 
     /* Navigation styles */
     nav {
@@ -181,15 +181,15 @@ footer {
     /* File system styling */
     .file-system {
       display: flex;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
       justify-content: center;
       gap: 20px;
       margin-top: 30px;
     }
 
     .file {
-      width: 150px;
-      height: 150px;
+      width: 14%;
+      aspect-ratio: 1 / 1;
       background-color: #444;
       border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -208,13 +208,23 @@ footer {
     }
 
     .file img {
-      width: 80%;
-      height: 80%;
+      width: 70%; /* Scales dynamically */
+      aspect-ratio: 1 / 1; /* Ensures it's always a perfect circle */
       border-radius: 50%;
+      object-fit: cover; /* Ensures the image fills the circle properly */
+      margin-top: 17px;
     }
 
     .file.dragging {
       opacity: 0.5;
+    }
+
+    .file-label {
+      font-size: 14px;
+      color: #e0e0e0; /* Matches the theme */
+      user-select: none;
+      pointer-events: none; /* Prevent interference with dragging */      
+      padding: 10px; /* Add some padding to balance spacing */
     }
 
     /* Banner style - Positioned at the top */
@@ -271,25 +281,30 @@ footer {
 
   <!-- Files Section -->
   <section class="section" id="file-system-section">
-    <h2>My Files</h2>
+    <h2>My Apps</h2>
     <p>Feel free to rearrange them however you like</p>
 
     <div class="file-system" id="file-system">
       <!-- Files in order: 2, 3, 5, 1, 4 -->
       <div class="file" draggable="true" id="file2" onclick="showBanner()">
-        <img src="https://via.placeholder.com/100/0000FF/808080" alt="File 2">
+        <img src="images/IMG_0899_Small.png" alt="File 2">
+        <p class="file-label">App 2</p>
       </div>
       <div class="file" draggable="true" id="file3" onclick="showBanner()">
-        <img src="https://via.placeholder.com/100/FF0000/FFFFFF" alt="File 3">
+        <img src="images/IMG_0899_Small.png" alt="File 3">
+        <p class="file-label">App 3</p>
       </div>
       <div class="file" draggable="true" id="file5" onclick="showBanner()">
-        <img src="https://via.placeholder.com/100/FFFF00/000000" alt="File 5">
+        <img src="images/IMG_0899_Small.png" alt="File 5">
+        <p class="file-label">App 5</p>
       </div>
       <div class="file" draggable="true" id="file1" onclick="showBanner()">
-        <img src="https://via.placeholder.com/100" alt="File 1">
+        <img src="images/IMG_0899_Small.png" alt="File 1">
+        <p class="file-label">App 1</p>
       </div>
       <div class="file" draggable="true" id="file4" onclick="showBanner()">
-        <img src="https://via.placeholder.com/100/00FF00/FFFFFF" alt="File 4">
+        <img src="images/IMG_0899_Small.png" alt="File 4">
+        <p class="file-label">App 4</p>
       </div>
     </div>
   </section>
@@ -353,18 +368,20 @@ footer {
     // Add the dragstart event listener to each file
     files.forEach(file => {
       file.addEventListener('dragstart', (e) => {
-        draggedItem = e.target;
+        draggedItem = e.target.closest('.file'); // Ensure we get the `.file` even if dragging starts from the image
         setTimeout(() => {
-          e.target.style.visibility = 'hidden';
+          draggedItem.style.opacity = '0'; // Hide dragged item to prevent layout shift
         }, 0);
         draggedItem.classList.add('dragging');
+        e.dataTransfer.setData("text/plain", draggedItem.id);
       });
 
       file.addEventListener('dragend', (e) => {
         setTimeout(() => {
-          draggedItem.style.visibility = 'visible';
+          draggedItem.style.opacity = '1'; // Restore visibility
           draggedItem.classList.remove('dragging');
           draggedItem = null;
+          resetHighlights(); // Ensure all boxes reset their color after dragging stops
         }, 0);
       });
 
@@ -374,23 +391,25 @@ footer {
 
       file.addEventListener('dragenter', (e) => {
         e.preventDefault();
-        if (e.target.classList.contains('file') && e.target !== draggedItem) {
-          e.target.style.backgroundColor = '#555';
+        const target = e.target.closest('.file');
+        if (target && target !== draggedItem) {
+          target.style.backgroundColor = '#555'; // Highlight drop target
         }
       });
 
       file.addEventListener('dragleave', (e) => {
-        e.target.style.backgroundColor = '#444';
+        const target = e.target.closest('.file');
+        if (target) {
+          target.style.backgroundColor = '#444'; // Reset background when leaving
+        }
       });
 
       file.addEventListener('drop', (e) => {
         e.preventDefault();
-        e.target.style.backgroundColor = '#444';
-        if (e.target.classList.contains('file') && e.target !== draggedItem) {
-          const target = e.target;
+        const target = e.target.closest('.file');
+        if (target && target !== draggedItem) {
           const parent = target.parentNode;
 
-          // Swap the dragged item and the target item in the parent
           const draggedIndex = Array.from(parent.children).indexOf(draggedItem);
           const targetIndex = Array.from(parent.children).indexOf(target);
 
@@ -400,11 +419,18 @@ footer {
             parent.insertBefore(draggedItem, target);
           }
         }
-
-        // Check the order of the files and redirect to error page if correct order is met
+        resetHighlights(); // Ensure all boxes reset their color after dropping
         checkFileOrder();
       });
     });
+
+    // Reset all file background colors to default
+    function resetHighlights() {
+      document.querySelectorAll('.file').forEach(file => {
+        file.style.backgroundColor = '#444';
+      });
+    }
+
 
     // Check if the files are in the specific order (1, 2, 3, 4, 5)
     function checkFileOrder() {
