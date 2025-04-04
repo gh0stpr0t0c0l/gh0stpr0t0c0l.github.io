@@ -348,7 +348,8 @@
       const displayBanner = sessionStorage.getItem('displayBanner');
 
       // If displayBanner is not set, show the banner and set it to "0"
-      if (displayBanner == '1') {
+      if (displayBanner === '1') {
+        showBanner();
         banner.style.display = 'block';
         sessionStorage.setItem('displayBanner', '0');
 
