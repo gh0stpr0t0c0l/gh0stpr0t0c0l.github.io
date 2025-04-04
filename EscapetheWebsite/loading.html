@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GrayeNet Entry</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #ffffff;
+      font-family: 'Courier New', Courier, monospace;
+      padding: 1rem 1.5rem;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    #terminal {
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 10px;
+      background-color: #ffffff;
+      animation: blink 1s step-start infinite;
+    }
+
+    @keyframes blink {
+      50% {
+        background-color: transparent;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="terminal"></div>
+
+  <script>
+    if (sessionStorage.getItem('youlose') === '1') {
+        // Redirect to 'youlose.html'
+        window.location.href = 'youlose.html';
+    }
+
+    if (sessionStorage.getItem('black') === '1') {
+        // Redirect to 'blackscreen.html'
+        window.location.href = 'blackscreen.html';
+    }
+
+    if (sessionStorage.getItem('bsod') === '1') {
+        // Redirect to 'bsod.html'
+        window.location.href = 'BSOD2.html';
+    }
+
+    if (sessionStorage.getItem('final') === '1') {
+        // Redirect to 'finale2.html'
+        window.location.href = 'finale2.html';
+    }
+
+    // Check if 'hidewindow' in sessionStorage is '1'
+    if (sessionStorage.getItem('hidewindow') === '1') {
+        // Redirect to 'grayenet.html'
+        window.location.href = 'grayenet.html';
+    }
+
+
+    const terminalText = `Welcome to GrayeNet :: [access_level: Observer]
+Protocol G-143 initialized
+
+Files recovered: 213
+Corruption Index: 46%
+
+"If you’re reading this… well. That’s troubling."`;
+
+    const terminal = document.getElementById("terminal");
+    let index = 0;
+
+    function typeLine() {
+      if (index < terminalText.length) {
+        terminal.innerHTML = terminalText.slice(0, index++) + '<span class="cursor"></span>';
+        setTimeout(typeLine, 10);
+      } else {
+        terminal.innerHTML = terminalText;
+        setTimeout(() => {
+          window.location.href = "grayenet.html";
+        }, 1700);
+      }
+    }
+
+    typeLine();
+  </script>
+</body>
+</html>
