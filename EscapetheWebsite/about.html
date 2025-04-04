@@ -26,9 +26,9 @@
     .banner {
       width: 100%;
       height: 300px;
-      background: url('images/IMG_0899.JPG') no-repeat center center/cover;
+      background: url('images/about2.jpeg') no-repeat center center/cover;
       margin-top: 0; /* Remove blank space */
-      border-radius: 10px 10px 0 0; /* Rounded corners for the top */
+      border-radius: 0 0 10px 10px; /* Rounded corners for the top */
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
 
@@ -66,8 +66,8 @@
     }
 
     .account-icon img {
-      width: 60%; /* Make sure the image fits within the circle */
-      height: 60%;
+      width: 88%; /* Make sure the image fits within the circle */
+      height: 88%;
       border-radius: 50%; /* Round the image */
     }
 
@@ -137,6 +137,7 @@
 
       .nav-links.active {
         display: block;
+        border-radius: 0 0 10px 10px;
       }
 
       .hamburger {
@@ -189,12 +190,12 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   text-align: center;
   transition: transform 0.3s ease, max-height 0.3s ease;
-  max-height: 480px; /* Initially limit the height FIXME */
+  max-height: 620px; /* Initially limit the height FIXME */
   overflow: hidden;
 }
 
 .team-member.expanded {
-  max-height: 540px; /* Expanded height */
+  max-height: 680px; /* Expanded height */
 }
 
 .team-member:hover {
@@ -202,7 +203,7 @@
 }
 
 .team-member img {
-  width: 100%;        /* Make the image stretch to the full width of the container */
+  width: 80%;        /* Make the image stretch to the full width of the container */
   height: auto;       /* Maintain the aspect ratio of the image */
   border-radius: 0;   /* Remove the border-radius to make the image rectangular */
   object-fit: cover;  /* Ensure the image covers the area without distortion */
@@ -290,32 +291,32 @@
 
     <div class="team-section">
       <div class="team-member">
-        <img src="images/IMG_0899.JPG" alt="Team Member">
-        <h3>John Doe</h3>
-        <p>CEO & Founder</p>
+        <img src="images/alexgraye.jpeg" alt="Team Member">
+        <h3>Alexander Graye</h3>
+        <p>CEO & Founder<br>(In Memoriam)</p>
         <p>John is the visionary behind our company, with over 15 years of experience in the tech industry.</p>
       </div>
 
       <div class="team-member">
-        <img src="images/IMG_0899.JPG" alt="Team Member">
-        <h3>Jane Smith</h3>
+        <img src="images/woman.jpeg" alt="Team Member">
+        <h3>Rachel Porter</h3>
         <p>Lead Designer</p>
-        <p>Jane leads our design team, ensuring that all our projects are visually compelling and user-friendly.</p>
+        <p>Rachel ensures each step of your journey feels seamless, yet there's an eerie precision to her craft. She guides you through unseen intricacies with a meticulous care that whispers, <i>nothing here is left to chance.</i></p>
         <p class="hover-number">0978</p>
       </div>
 
       <div class="team-member">
-        <img src="images/IMG_0899.JPG" alt="Team Member">
-        <h3>Sam Johnson</h3>
+        <img src="images/man.jpeg" alt="Team Member">
+        <h3>Malcolm Hayes</h3>
         <p>Senior Developer</p>
-        <p>Sam is an expert developer, with a passion for clean code and efficient solutions.</p>
+        <p>Malcolm orchestrates the daily operations with an expertise that ensures unbroken order. His stewardship preserves traditions shrouded in time—some whispered to predate even his tenure.</p>
       </div>
 
       <div class="team-member">
-        <img src="images/IMG_0899.JPG" alt="Team Member">
-        <h3>Emily Brown</h3>
+        <img src="images/woman3.jpeg" alt="Team Member">
+        <h3>Ivy Whitaker</h3>
         <p>Marketing Specialist</p>
-        <p>Emily is in charge of marketing, ensuring our products and services reach the right audience.</p>
+        <p>Ivy greets every guest with poised efficiency, drawing them into the experience with practiced warmth. She answers many questions—but never all. As she often says, “Everyone has a great time here.”</p>
       </div>
     </div>
   </section>
