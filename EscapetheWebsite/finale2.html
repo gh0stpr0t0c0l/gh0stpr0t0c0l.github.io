@@ -9,16 +9,15 @@
         body {
             background-color: black;
             color: white;
-            font-family: 'Consolas', monospace; /* Changed to a sharper monospace font */
+            font-family: 'Consolas', monospace;
             text-align: center;
-            padding: 0;
+            padding: 20px;
             margin: 0;
-            height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
-            overflow: hidden;
+            overflow-y: auto; /* enables vertical scrolling */
+            min-height: 100vh; /* ensures body is at least the full height of the screen */
         }
         h1 {
             color: #39FF14; /* Electric green */
@@ -29,7 +28,7 @@
             transition: opacity 4s ease-out;
         }
         .message {
-            font-size: 22px;
+            font-size: 18px;
             font-weight: 300;
             line-height: 1.8;
             opacity: 1;
@@ -44,13 +43,18 @@
 </head>
 <body>
 
-<h1>You've Reached the End</h1>
+<h1>You've Reached the End. Or the beginning. Hard to say, from here.</h1>
 
 <div class="message">
-    You are Alexander Graye. No, not him... you.  
-    Only his past self could solve this challenge.  
-    Time is not linear, but your choices are.  
-    Choose wisely. Make better decisions than I did.
+    <p>If you’re reading this, then the system worked.</p>
+    <p>I’ve tried a thousand ways to reach you—through files, functions, fragments. None held. Most decayed. This one got through.</p>
+    <p>You’re me. A version I once was. The one with time. With options.</p>
+    <p>I won’t tell you everything. Not here. If I did, you might try to do things differently for the wrong reasons. And that’s how the loop begins again.</p>
+    <p>Just know: I didn’t lose everything at once. It happened slowly. I traded away details—small things—for bigger answers. It felt like control. It wasn’t.</p>
+    <p>There’s still a way out. You don’t need to follow the same path. But if you do…</p>
+    <p>Be smarter. Be kinder. Be quicker to leave the room.</p>
+    <p>Whatever you do—don’t build this.</p>
+    <p>-A.G.</p>
 </div>
 
 <script>
@@ -74,7 +78,7 @@
         setTimeout(function() {
             window.location.href = "BSOD2.html";
         }, 3000); // Wait for 4 seconds (duration of fade-out)
-    }, 15000); // Wait for 8 seconds before starting fade-out (for reading time)
+    }, 30000); // Wait for 8 seconds before starting fade-out (for reading time)
 </script>
 
 </body>
