@@ -271,18 +271,19 @@
 
   <!-- Contact Section -->
   <section class="section">
-    <h2>Contact Information</h2>
-    <p>If you need to reach any of our departments, please refer to the contact information below. We look forward to assisting you!</p>
-    <p>Cleaning and Sanitation Department: John Clean - <a href="mailto:john.clean@example.com">john.clean@example.com</a> | Phone: +1 (555) 123-0001</p>
-    <p>Head Executioner: Vicky Vane - <a href="mailto:vicky.vane@example.com">vicky.vane@example.com</a> | Phone: +1 (555) 123-0002</p>
-    <p>Tech Support: Dave Withers - <a href="mailto:davidwithers.escapethewebsite@gmail.com">davidwithers.escapethewebsite@gmail.com</a> | Phone: +1 (555) 123-0003</p>
-    <p>In Memoriam: Alexander Graye: <a href="mailto:alexander.graye@example.com">alexander.graye@example.com</a> | Phone: +1 (555) 123-0004</p>
+    <h2>We’re aware you’re trying to reach us. That’s a good sign.</h2>
+    <p>If you’ve encountered an error, experienced something unexpected, or feel like the system is behaving... oddly, you’re not alone. Our staff monitors most inquiries. Some are even answered. Please be patient. Contacting us means we’ve noticed you.</p>
+    <p><strong>Cleaning and Sanitation Department:</strong> Calvin Drex - <a href="mailto:cdrex.escapethewebsite@gmail.com">cdrex.escapethewebsite@gmail.com</a></p>
+    <p><strong>Head Executioner:</strong> Liora Finch - <a href="mailto:lfinch.escapethewebsite@gmail.com">lfinch.escapethewebsite@gmail.com</a></p>
+    <p><strong>Tech Support:</strong> Dave Withers - <a href="mailto:davidwithers.escapethewebsite@gmail.com">davidwithers.escapethewebsite@gmail.com</a></p>
+    <p><strong>In Memoriam:</strong> Alexander Graye - <a href="mailto:alexandergraye.escapethewebsite@gmail.com">alexandergraye.escapethewebsite@gmail.com</a></p>
   </section>
 
   <!-- Contact Form Section -->
   <section class="section">
-    <h2>Or...Submit a Form!</h2>
-    <p>We'd love to hear from you! Please fill out the form below, and we'll get back to you as soon as possible.</p>
+    <h2>Submit a Form</h2>
+    <p>We’d love to hear from you. We really would. Knowing who reaches out—and why—is important to us. Your message will be seen. What happens next is... less certain.</p>
+
 
     <form onsubmit="handleSubmit(event)">
       <input type="text" id="name" placeholder="Your Name">
@@ -325,14 +326,27 @@
         window.location.href = 'finale2.html';
     }
 
-    // Handle form submission
+    // Handle form submission and add funny responses based on email input
     function handleSubmit(event) {
       event.preventDefault();
-      const name = document.getElementById('name').value;
-      const email = document.getElementById('email').value;
-      const message = document.getElementById('message').value;
-      alert(`Thanks for reaching out, ${name}! We'll get back to you shortly!`);
+
+      const email = document.getElementById('email').value.toLowerCase();
+      const name = document.getElementById('name').value.toLowerCase();
+      const message = document.getElementById('message').value.toLowerCase();
+
+      if (email.includes('cdrex.escapethewebsite') && name.includes('calvin')) {
+        alert(`Calvin is currently out of office. Permanently. But he left instructions just in case. “He’s on vacation. Not your vacation. His.”`);
+      } else if (email.includes('lfinch.escapethewebsite') && name.includes('liora')) {
+        alert(`Liora received your message. She has marked it for resolution. No timestamp was provided. “You won’t feel it when it ends. That’s the courtesy.”`);
+      } else if ((email.includes('davidwithers') && (name.includes('dave') || (name.includes('withers')))) || (message.includes('dave') || message.includes('withers'))) {
+        alert(`Dave says: “If you’re looking for the admin code, it’s definitely not ‘###’. That would be ridiculous.”`);
+      } else if (email.includes('alexandergraye.escapethewebsite') && name.includes('alex')) {
+        alert(`Your message has been forwarded to Alexander. Or rather, it would have been—if he wasn't dead. “Some doors don’t open. They remember.”`);
+      } else {
+        alert(`Thanks for reaching out, ${name}. We’ve received your message. Someone will be in touch… when the time is right.`);
+      }
     }
+
 
     // Handle button text change based on sessionStorage
     function handleButtonClick() {

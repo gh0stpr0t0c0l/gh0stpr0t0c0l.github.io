@@ -286,18 +286,18 @@
 
   <!-- Contact Section -->
   <section class="section">
-    <h2>Contact Information</h2>
-    <p>If you need to reach any of our departments, please refer to the contact information below. We look forward to assisting you!</p>
-    <p><strong>Cleaning and Sanitation Department:</strong> John Clean - <a href="mailto:john.clean@example.com">john.clean@example.com</a></p>
-    <p><strong>Head Executioner:</strong> Vicky Vane - <a href="mailto:vicky.vane@example.com">vicky.vane@example.com</a></p>
+    <h2>We’re aware you’re trying to reach us. That’s a good sign.</h2>
+    <p>If you’ve encountered an error, experienced something unexpected, or feel like the system is behaving... oddly, you’re not alone. Our staff monitors most inquiries. Some are even answered. Please be patient. Contacting us means we’ve noticed you.</p>
+    <p><strong>Cleaning and Sanitation Department:</strong> Calvin Drex - <a href="mailto:cdrex.escapethewebsite@gmail.com">cdrex.escapethewebsite@gmail.com</a></p>
+    <p><strong>Head Executioner:</strong> Liora Finch - <a href="mailto:lfinch.escapethewebsite@gmail.com">lfinch.escapethewebsite@gmail.com</a></p>
     <p><strong>Tech Support:</strong> Dave Withers - <a href="mailto:davidwithers.escapethewebsite@gmail.com">davidwithers.escapethewebsite@gmail.com</a></p>
-    <p><strong>In Memoriam: Alexander Graye:</strong> <a href="mailto:alexander.graye@example.com">alexander.graye@example.com</a></p>
+    <p><strong>In Memoriam:</strong> Alexander Graye - <a href="mailto:alexandergraye.escapethewebsite@gmail.com">alexandergraye.escapethewebsite@gmail.com</a></p>
   </section>
 
   <!-- Contact Form Section -->
   <section class="section">
-    <h2>Or...Submit a Form!</h2>
-    <p>We'd love to hear from you! Please fill out the form below, and we'll get back to you as soon as possible.</p>
+    <h2>Submit a Form</h2>
+    <p>We’d love to hear from you. We really would. Knowing who reaches out—and why—is important to us. Your message will be seen. What happens next is... less certain.</p>
 
     <form onsubmit="handleSubmit(event)">
       <input type="text" id="name" placeholder="Your Name">
@@ -350,16 +350,16 @@
       const name = document.getElementById('name').value.toLowerCase();
       const message = document.getElementById('message').value.toLowerCase();
 
-      if (email.includes('john.clean') && name.includes('John')) {
-        alert(`Thanks for contacting John Clean! He'll clean up your concerns in no time, no mess left behind!`);
-      } else if (email.includes('vicky.vane') && name.includes('Vicky')) {
-        alert(`Vicky Vane is sharpening her tools as we speak...`);
+      if (email.includes('cdrex.escapethewebsite') && name.includes('calvin')) {
+        alert(`Calvin is currently out of office. Permanently. But he left instructions just in case. “He’s on vacation. Not your vacation. His.”`);
+      } else if (email.includes('lfinch.escapethewebsite') && name.includes('liora')) {
+        alert(`Liora received your message. She has marked it for resolution. No timestamp was provided. “You won’t feel it when it ends. That’s the courtesy.”`);
       } else if ((email.includes('davidwithers') && (name.includes('dave') || (name.includes('withers')))) || (message.includes('dave') || message.includes('withers'))) {
-        alert(`Sally Tech is debugging your problem right now... maybe it's a feature?`);
-      } else if (email.includes('alexander.graye') && name.includes('Alex')) {
-        alert(`Alexander Graye is no longer with us... but his inbox is still active. Spooky!`);
+        alert(`Dave says: “If you’re looking for the admin code, it’s definitely not ‘###’. That would be ridiculous.”`);
+      } else if (email.includes('alexandergraye.escapethewebsite') && name.includes('alex')) {
+        alert(`Your message has been forwarded to Alexander. Or rather, it would have been—if he wasn't dead. “Some doors don’t open. They remember.”`);
       } else {
-        alert(`Thanks for reaching out, ${name}! We'll get back to you shortly!`);
+        alert(`Thanks for reaching out, ${name}. We’ve received your message. Someone will be in touch… when the time is right.`);
       }
     }
     
