@@ -1,14 +1,10 @@
 CHANGE IMAGE ALT TEXT
 
-"this employee into mazes, charts, etcc. etc." - order of files in file system OR "favorites are 1. mazes, 2. charts etc. etc"
-make sure to change color of faded text
+contact2 page form gives hint if much time has passed
 
-"Contact our staff for web dev help"
-"if the website is giving you trouble, the admin code is ###"s
+change app image
 
-Random Capital letters in lore section
-This was his child-years of life
-Project got deeper, grow in paranoia,
-Remains unfinished
 
-Foreboding, cryptic
+
+
+
