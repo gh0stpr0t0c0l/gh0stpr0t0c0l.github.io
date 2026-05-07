@@ -6,7 +6,7 @@ import time
 import re
 import hashlib
 
-CSV_DIR = "./csv"
+CSV_DIR = "./spotify_export"
 OUTPUT_FILE = "library.json"
 
 YOUTUBE_SEARCH_URL = "https://www.youtube.com/results"
